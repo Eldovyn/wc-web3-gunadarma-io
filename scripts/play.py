@@ -67,6 +67,7 @@ def cli(account_name, guess_number, address, network):
         
         # Memuat (load) kontrak Game yang sudah dideploy ke jaringan
         game = project.TebakAngka.at(address)
+        nft_contract = project.TebakAngkaNFT.at(game.nftContract())
         
         print(f"Menebak angka {guess_number} ke kontrak {game.address}...")
         
@@ -125,6 +126,14 @@ def cli(account_name, guess_number, address, network):
                     print("🎁 Anda mendapatkan 10 Token TebakAngkaCoin dan 1 TebakAngkaNFT.")
                 else:
                     print("😢 Sayang sekali tebakan Anda SALAH. Coba lagi!")
+                
+                # Mencari event Transfer dari TebakAngkaNFT untuk mendapatkan token ID
+                transfer_logs = list(tx.decode_logs(nft_contract.Transfer))
+                if transfer_logs:
+                    for log in transfer_logs:
+                        if log.to == player.address:
+                            print(f"🎨 NFT Minted! Contract: {nft_contract.address} | Token ID: {log.tokenId}")
+                            break
                 print("------------------")
             else:
                 print("Event GuessMode tidak ditemukan di transaksi ini.")

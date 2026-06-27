@@ -28,6 +28,7 @@ contract TebakAngkaNFT is ERC721, ERC721URIStorage, Ownable {
             creator: to,
             timestamp: block.timestamp
         });
+        nextTokenId++;
     }
 
     function getNFTDetails(
