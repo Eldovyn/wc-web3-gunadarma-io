@@ -1,0 +1,26 @@
+name: tebak-angka
+
+compile:
+  output_extra:
+    - ABI
+
+etherscan:
+  ethereum:
+    sepolia:
+      uri: https://sepolia.etherscan.io
+      api_uri: https://api.etherscan.io/v2/api?chainid=11155111
+
+solidity:
+  version: 0.8.27
+  import_remapping:
+    - "@openzeppelin=OpenZeppelin/5.0.0"
+
+  dependencies:
+    - name: OpenZeppelin
+      github: OpenZeppelin/openzeppelin-contracts
+      version: 5.0.0
+
+node:
+  ethereum:
+    sepolia:
+      uri: https://ethereum-sepolia-rpc.publicnode.com

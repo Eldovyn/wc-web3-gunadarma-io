@@ -1,0 +1,13 @@
+# Ape stuff
+.build/
+.cache/
+
+# Python virtual environments
+.env
+.venv
+env/
+venv/
+.pytest_cache
+.python-version
+__pycache__
+
