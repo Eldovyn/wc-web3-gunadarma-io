@@ -1,17 +1,17 @@
 // SPDX-Licence-Identifier: MIT
 pragma solidity ^0.8.27;
 
-interface MTKCoin {
+interface ITebakAngkaCoin {
     function mint(address to, uint256 amount) external;
 }
 
-interface TebakAngkaNFT {
+interface ITebakAngkaNFT {
     function mint(address to, string memory tokenURI) external;
 }
 
 contract TebakAngka {
-    MTKCoin public tokenContract;
-    TebakAngkaNFT public nftContract;
+    ITebakAngkaCoin public tokenContract;
+    ITebakAngkaNFT public nftContract;
 
     struct PlayerInfo {
         uint256 wins;
@@ -28,8 +28,8 @@ contract TebakAngka {
     );
 
     constructor(address _tokenContract, address _nftContract) {
-        tokenContract = MTKCoin(_tokenContract);
-        nftContract = TebakAngkaNFT(_nftContract);
+        tokenContract = ITebakAngkaCoin(_tokenContract);
+        nftContract = ITebakAngkaNFT(_nftContract);
     }
 
     function guess(
