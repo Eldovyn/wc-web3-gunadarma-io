@@ -28,20 +28,20 @@ def cli(account_name, network, publish):
         print(f"Deploying contracts using account: {deployer.address}")
 
         my_token = deployer.deploy(project.TebakAngkaCoin, deployer.address, publish=publish)
-        print(f"TebakAngkaCoin successfully deployed to: {my_token.address}")
-        set_key(".env", "TEBAK_ANGKA_COIN_ADDRESS", my_token.address)
+        print(f"RewardToken successfully deployed to: {my_token.address}")
+        set_key(".env", "RNG_SHOWCASE_COIN_ADDRESS", my_token.address)
         
         my_nft = deployer.deploy(
             project.TebakAngkaNFT, deployer.address, publish=publish
         )
-        print(f"TebakAngkaNFT successfully deployed to: {my_nft.address}")
-        set_key(".env", "TEBAK_ANGKA_NFT_ADDRESS", my_nft.address)
+        print(f"RewardNFT successfully deployed to: {my_nft.address}")
+        set_key(".env", "RNG_SHOWCASE_NFT_ADDRESS", my_nft.address)
 
         game = deployer.deploy(
             project.TebakAngka, my_token.address, my_nft.address, publish=publish
         )
-        print(f"TebakAngka Game successfully deployed to: {game.address}")
-        set_key(".env", "TEBAK_ANGKA_ADDRESS", game.address)
+        print(f"RNG Showcase Contract successfully deployed to: {game.address}")
+        set_key(".env", "RNG_SHOWCASE_ADDRESS", game.address)
 
         if publish:
             print(f"Contracts verified on Etherscan!")
